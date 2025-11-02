@@ -70,8 +70,8 @@ def main():
     """
     print("🚀 Starting Log Analysis Session")
     print("=" * 50)
-    current_dir = os.getcwd()
-    with open(current_dir + "/log-analysis/sample_logs.txt", "r") as file:
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    with open(os.path.join(current_dir, "sample_logs.txt"), "r") as file:
         logs = [parse_log(line.strip()) for line in file if parse_log(line.strip())]
     calculate_service_log_and_error_count(logs)
     print("Service Log Count:", service_log_count)
