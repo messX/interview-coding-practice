@@ -1,0 +1,15 @@
+2024-01-17T10:30:15Z INFO payment_service Payment processed successfully for user_id=12345
+2024-01-17T10:30:16Z ERROR payment_service Failed to connect to database: timeout
+2024-01-17T10:30:17Z WARN inventory_service Low stock alert for product_id=67890
+2024-01-17T10:30:18Z INFO user_service User login successful for user_id=54321
+2024-01-17T10:30:19Z ERROR payment_service Payment validation failed: invalid card
+2024-01-17T10:31:20Z INFO payment_service Payment processed successfully for user_id=98765
+2024-01-17T10:31:25Z ERROR inventory_service Database connection lost
+2024-01-17T10:31:30Z INFO user_service User logout for user_id=54321
+2024-01-17T10:32:15Z ERROR payment_service Failed to connect to database: timeout
+2024-01-17T10:32:45Z WARN payment_service Rate limit exceeded for user_id=12345
+2024-01-17T11:15:10Z INFO notification_service Email sent successfully
+2024-01-17T11:15:15Z ERROR notification_service SMTP server unavailable
+2024-01-17T11:30:20Z INFO payment_service Payment processed successfully for user_id=11111
+2024-01-17T11:45:30Z ERROR inventory_service Database connection lost
+2024-01-17T12:00:15Z INFO user_service User registration completed for user_id=22222

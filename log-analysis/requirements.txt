@@ -1,0 +1,7 @@
+# Requirements for Log Analysis Coding Practice
+# Standard library only - no external dependencies needed for this problem
+
+# For potential future enhancements:
+# pandas>=1.5.0  # For advanced data analysis
+# matplotlib>=3.5.0  # For visualization
+# pytest>=7.0.0  # For testing
