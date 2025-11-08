@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "inventory-reservation-system",
+		"name": "Inventory Reservation System",
+		"description": "API collection for testing the Inventory Reservation System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/inventory/status",
+					"host": ["{{base_url}}"],
+					"path": ["api", "inventory", "status"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Inventory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/inventory/{{sku}}",
+					"host": ["{{base_url}}"],
+					"path": ["api", "inventory", "{{sku}}"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reserve Inventory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"reservation_id\", jsonData.reservationId);",
+							"    console.log(\"Saved reservation ID: \" + jsonData.reservationId);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"sku\": \"{{sku}}\",\n  \"quantity\": 10,\n  \"timeoutMinutes\": 15\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/inventory/reserve",
+					"host": ["{{base_url}}"],
+					"path": ["api", "inventory", "reserve"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Release Reservation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/inventory/release/{{reservation_id}}",
+					"host": ["{{base_url}}"],
+					"path": ["api", "inventory", "release", "{{reservation_id}}"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm Reservation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/inventory/confirm/{{reservation_id}}?orderId={{order_id}}",
+					"host": ["{{base_url}}"],
+					"path": ["api", "inventory", "confirm", "{{reservation_id}}"],
+					"query": [
+						{
+							"key": "orderId",
+							"value": "{{order_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "H2 Console",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/h2-console",
+					"host": ["{{base_url}}"],
+					"path": ["h2-console"]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "sku",
+			"value": "LAPTOP-001",
+			"type": "string"
+		},
+		{
+			"key": "reservation_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "order_id",
+			"value": "ORDER-12345",
+			"type": "string"
+		}
+	]
+}
+

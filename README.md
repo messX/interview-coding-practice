@@ -10,33 +10,48 @@ Practice coding problems to prepare for Engineering Manager and Senior/Staff Eng
 
 ```
 interview-coding-practice/
-├── log-analysis/           # Log parsing and metrics generation
-├── rate-limiter/          # (Coming soon) Rate limiting algorithms
-├── cache-design/          # (Coming soon) Distributed cache implementation
-├── event-processing/      # (Coming soon) Stream processing pipeline
+├── log-analysis/                    # Log parsing and metrics generation (Python)
+├── inventory-reservation-system/   # Inventory management with concurrency (Java/Spring Boot)
+├── rate-limiter/                   # (Coming soon) Rate limiting algorithms
+├── cache-design/                   # (Coming soon) Distributed cache implementation
+├── event-processing/               # (Coming soon) Stream processing pipeline
 └── README.md
 ```
 
-## 🐍 Environment Setup
+## 🛠️ Environment Setup
 
 Each problem directory contains:
 - `README.md` - Problem statement and requirements
-- `requirements.txt` - Python dependencies
+- Dependencies file (`requirements.txt` for Python, `build.gradle` for Java)
 - Test files for validation
-- Solution templates
+- Solution templates with TODOs
 
-### Virtual Environment
+### Python Projects (log-analysis)
 
 ```bash
-# Create virtual environment (if not exists)
-python3 -m venv coding-env
+# Use system Python (no dependencies needed)
+cd log-analysis
+python3 log_analyzer.py
 
-# Activate virtual environment
-source coding-env/bin/activate
+# Or set up environment
+export PYTHON=/usr/bin/python3
+```
 
-# Install dependencies for a specific problem
-cd <problem-directory>
-pip install -r requirements.txt
+### Java/Spring Boot Projects (inventory-reservation-system)
+
+```bash
+cd inventory-reservation-system
+
+# Build
+./gradlew build
+
+# Run
+./gradlew bootRun
+
+# Test
+./gradlew test
+
+# Access H2 Console: http://localhost:8080/h2-console
 ```
 
 ## 📚 Problems
@@ -45,11 +60,27 @@ pip install -r requirements.txt
 **Language:** Python  
 **Difficulty:** Medium  
 **Topics:** String processing, data structures, file I/O, aggregation  
-**Status:** Ready to practice
+**Status:** ✅ Completed
 
 Parse log files and generate metrics (request counts, response times, error rates).
 
-### 2. Rate Limiter (Coming Soon)
+### 2. Inventory Reservation System
+**Language:** Java 17 + Spring Boot  
+**Difficulty:** Hard  
+**Topics:** Concurrency, transactions, locking, race conditions, ACID  
+**Status:** 🚀 Ready to practice
+
+Build an inventory management system that handles concurrent reservations, prevents overselling, and manages reservation expiration. Focus on pessimistic/optimistic locking, transaction isolation levels, and race condition handling.
+
+**Key Features:**
+- Reserve/release inventory with concurrency control
+- Prevent overselling using database locks
+- Automatic expiration cleanup
+- Transaction management with Spring
+
+**Setup:** See `inventory-reservation-system/README.md`
+
+### 3. Rate Limiter (Coming Soon)
 **Language:** Python/Go  
 **Difficulty:** Medium  
 **Topics:** Algorithms, concurrency, system design
@@ -87,5 +118,6 @@ Track your practice sessions in Notion:
 
 ---
 
-**Last Updated:** November 2, 2025
+**Last Updated:** November 8, 2025
+
 
